@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloWorldController;
+use App\Http\Controllers\NotificationController;
+use App\Models\Notification;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +22,34 @@ Route::get (
   {
     return view('welcome');
   }
+);
+
+/**
+ * Notification
+ */
+
+Route::get (
+  'notification',
+  [
+    NotificationController::class,
+    'getAll'
+  ]
+);
+
+Route::get (
+  'notification/light',
+  [
+    NotificationController::class,
+    'getAllLight'
+  ]
+);
+
+Route::get (
+  'notification/{id}',
+  [
+    NotificationController::class,
+    'getById'
+  ]
 );
 
 /** My Routes
