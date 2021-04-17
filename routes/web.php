@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HelloWorldController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,18 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+Route::get (
+  '/',
+  function ()
+  {
+    return view('welcome');
+  }
+);
 
 /** My Routes
  * ------------
  */
 
-Route::get(
+Route::get (
   'hello-world',
   [
-    \App\Http\Controllers\HelloWorldController::class,
+    HelloWorldController::class,
     'helloWorld'
   ]
 );
@@ -32,7 +36,7 @@ Route::get(
 Route::get(
   'hello/{name?}',
   [
-    \App\Http\Controllers\HelloWorldController::class,
+    HelloWorldController::class,
     'hello'
   ]
 );
@@ -48,20 +52,32 @@ Route::get(
  * }
  */
 
-Route::get('test/hello-world', function () {
-  return view('hello-world');
-});
+Route::get (
+  'test/hello-world',
+  function ()
+  {
+    return view('hello-world');
+  }
+);
 
-Route::get('test/show-name/{name}', function ($name) {
-  return 'Your name is: '.$name;
-});
+Route::get (
+  'test/show-name/{name}',
+  function ($name)
+  {
+    return 'Your name is: '.$name;
+  }
+);
 
-Route::get('test/show-name-optional/{name?}', function ($name = 'Anonymous Elephant') {
-  // if (isset($name)) {
-  //   return 'Your name is: '.$name;
-  // }
+Route::get (
+  'test/show-name-optional/{name?}',
+  function ($name = 'Anonymous Elephant')
+  {
+    // if (isset($name)) {
+    //   return 'Your name is: '.$name;
+    // }
 
-  // return 'Name is empty! Now, your name is: !';
+    // return 'Name is empty! Now, your name is: !';
 
-  return 'Your name is: '.$name;
-});
+    return 'Your name is: '.$name;
+  }
+);
