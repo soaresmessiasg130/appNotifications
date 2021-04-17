@@ -17,21 +17,46 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-/**
- * ------------------------------------------------------------------------
- * Tests
- *
+/** My Routes
+ * ------------
  */
 
-Route::get('hello-world', function () {
+Route::get(
+  'hello-world',
+  [
+    \App\Http\Controllers\HelloWorldController::class,
+    'helloWorld'
+  ]
+);
+
+Route::get(
+  'hello/{name?}',
+  [
+    \App\Http\Controllers\HelloWorldController::class,
+    'hello'
+  ]
+);
+
+/** Tests('test/')
+ * ------------
+ * Routes: {
+ *   get: [
+ *     'hello-world',
+ *     'show-name/{name},
+ *     'show-name-optional/{name}
+ *   ]
+ * }
+ */
+
+Route::get('test/hello-world', function () {
   return view('hello-world');
 });
 
-Route::get('show-name/{name}', function ($name) {
+Route::get('test/show-name/{name}', function ($name) {
   return 'Your name is: '.$name;
 });
 
-Route::get('show-name-optional/{name?}', function ($name = 'Anonymous Elephant') {
+Route::get('test/show-name-optional/{name?}', function ($name = 'Anonymous Elephant') {
   // if (isset($name)) {
   //   return 'Your name is: '.$name;
   // }
