@@ -72,6 +72,23 @@ Route::get(
   ]
 );
 
+// Atribuição em Massa
+
+Route::get (
+  'bulk-assignment',
+  function ()
+  {
+    $notification = [
+      'title' => 'Rain day',
+      'desc' => 'Now is rain',
+      'created_at' => date ('Y-m-d H:i:s'),
+      'updated_at' => date ('Y-m-d H:i:s')
+    ];
+
+    return \App\Models\Notification::create ($notification);
+  }
+);
+
 /** Tests('test/')
  * ------------
  * Routes: {
